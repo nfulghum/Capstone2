@@ -34,7 +34,7 @@ We will be utilizing two APIs and PostgreSQL to bring this project to life.
 
 ### User Flow
 
-COMING SOON
+![Alt text](/ResolutionBuddy.jpg)
 
 ### Design
 
