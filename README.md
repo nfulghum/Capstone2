@@ -18,9 +18,9 @@ This app is meant for the millions of people who set new years resolutions in Ja
 * [![Express][Express]][Express-url]
 * [![PostgreSQL][PostgreSQL]][PostgreSQL]
 
-## Data
+## Powered By
 
-We will be utilizing two APIs and PostgreSQL to bring this project to life.
+We will be utilizing two APIs paired with our own backend DB to bring this project to life.
 
 [spoonacular API](https://spoonacular.com/food-api)
 
@@ -28,15 +28,14 @@ We will be utilizing two APIs and PostgreSQL to bring this project to life.
 
 ### Sensitive Data
 
-* Will secure passwords
+* Secure passwords
 
-## UI/UX
 
-### User Flow
+## User Flow
 
 ![Alt text](/ResolutionBuddy.jpg)
 
-### Design
+## Design
 
 COMING SOON
 
