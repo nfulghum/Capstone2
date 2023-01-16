@@ -3,14 +3,15 @@ import { BrowserRouter } from 'react-router-dom';
 import AppRoutes from './routes/AppRoutes';
 import Navigation from './components/Navigation';
 
+
 function App() {
   return (
-    <div className="App">
-      <BrowserRouter>
-        <Navigation />
-        <AppRoutes />
-      </BrowserRouter>
-    </div>
+
+    <BrowserRouter>
+      <Navigation />
+      <AppRoutes />
+    </BrowserRouter>
+
   );
 }
 

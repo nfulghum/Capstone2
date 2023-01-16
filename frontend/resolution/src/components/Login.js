@@ -41,13 +41,13 @@ const Login = ({ login }) => {
             <CssBaseline />
             <Box
                 sx={{
-                    marginTop: 8,
+                    marginTop: 40,
                     display: 'flex',
                     flexDirection: 'column',
                     alignItems: 'center',
                 }}
             >
-                <Typography component="h1" variant="h5" color='#bf360c'>
+                <Typography component="h1" variant="h5" color='#DD5F18'>
                     Sign in
                 </Typography>
                 <form onSubmit={handleSubmit}>
@@ -81,12 +81,12 @@ const Login = ({ login }) => {
                             fullWidth
                             variant="contained"
                             sx={{ mt: 3, mb: 2 }}
-                            style={{ background: '#bf360c' }}
+                            style={{ background: '#093D65' }}
                         >
                             Login
                         </Button>
                         <Grid item>
-                            <Link href="signup" variant="body2" color='#bf360c'>
+                            <Link href="signup" variant="body2" color='#DD5F18'>
                                 {"Don't have an account? Sign Up"}
                             </Link>
                         </Grid>

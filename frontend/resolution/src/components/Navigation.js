@@ -20,7 +20,7 @@ const Navigation = () => {
 
     return (
         <Box sx={{ flexGrow: 1 }}>
-            <AppBar position="sticky" style={{ background: '#e0e0e0' }}>
+            <AppBar position="fixed" style={{ background: '#e0e0e0' }}>
                 <Toolbar>
                     <Link {...linkProps} to='/'>
                         <img src={smallLogo} alt="logo" style={{ width: '100px', height: '100px', margin: '0px 10px' }} />
