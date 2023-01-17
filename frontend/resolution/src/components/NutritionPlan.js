@@ -1,9 +1,9 @@
 import React from 'react';
 
-const NutritionInfo = () => {
+const NutritionPlan = () => {
     return (
         <div>NutritionInfo</div>
     )
 }
 
-export default NutritionInfo;
+export default NutritionPlan;

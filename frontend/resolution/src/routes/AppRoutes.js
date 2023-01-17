@@ -8,7 +8,7 @@ import Exercise from '../components/Exercise';
 import ExerciseCategory from '../components/ExerciseCategory';
 import ExerciseInfo from '../components/ExerciseInfo';
 import Nutrition from '../components/Nutrition';
-import NutritionInfo from '../components/NutritionInfo';
+import NutritionPlan from '../components/NutritionPlan';
 
 const AppRoutes = () => {
     return (
@@ -21,7 +21,7 @@ const AppRoutes = () => {
                 <Route path='/exercise/:handle' element={<ExerciseCategory />} />
                 <Route path='/exercise/:handle/info' element={<ExerciseInfo />} />
                 <Route path='/nutrition' element={<Nutrition />} />
-                <Route path='/nutrition/:handle' element={<NutritionInfo />} />
+                <Route path='/nutrition/:handle' element={<NutritionPlan />} />
                 <Route path='/profile' element={<Profile />} />
             </Routes>
         </div>

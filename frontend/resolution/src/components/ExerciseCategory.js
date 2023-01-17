@@ -1,4 +1,5 @@
 import React from 'react';
+import ExerciseCard from './ExerciseCard';
 
 const ExerciseCategory = () => {
     return (
