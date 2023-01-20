@@ -1,16 +1,18 @@
-import React, { usecontext } from 'react';
+import React, { useContext } from 'react';
+import UserContext from './UserContext';
 import {
     Link,
     AppBar,
     Box,
     Toolbar,
     Typography,
-    IconButton
 } from '@mui/material'
 import { NavLink } from 'react-router-dom';
 import smallLogo from '../assets/smallLogo.png'
 
-const Navigation = () => {
+const Navigation = ({ logout }) => {
+
+    const { currentUser } = useContext(UserContext);
 
     const linkProps = {
         underline: 'hover',
@@ -28,14 +30,20 @@ const Navigation = () => {
                     <Typography variant="h6" component="div" color='#bf360c' sx={{ flexGrow: 1 }}>
                         RESOLUTION BUDDY
                     </Typography>
-                    <>
-                        <Link sx={{ mr: 2 }} {...linkProps} to="exercise">Exercise</Link>
-                        <Link sx={{ mr: 2 }} {...linkProps} to="nutrition">Nutrition</Link>
-                        <Link sx={{ mr: 2 }} {...linkProps} to="profile">Profile</Link>
-                        <Link sx={{ mr: 2 }} {...linkProps} to="logout">Logout</Link>
-                        <Link sx={{ mr: 2 }} {...linkProps} to="signup">Sign Up</Link>
-                        <Link sx={{ mr: 2 }} {...linkProps} to="login">Login</Link>
-                    </>
+                    {currentUser ?
+                        <>
+                            <Link sx={{ mr: 2 }} {...linkProps} to="exercise">Exercise</Link>
+                            <Link sx={{ mr: 2 }} {...linkProps} to="nutrition">Nutrition</Link>
+                            <Link sx={{ mr: 2 }} {...linkProps} to="profile">Profile</Link>
+                            <Link sx={{ mr: 2 }} onClick={logout} {...linkProps} to="logout">Logout</Link>
+                            {currentUser.first_name || currentUser.username}
+                        </>
+                        :
+                        <>
+                            <Link sx={{ mr: 2 }} {...linkProps} to="signup">Sign Up</Link>
+                            <Link sx={{ mr: 2 }} {...linkProps} to="login">Login</Link>
+                        </>
+                    }
                 </Toolbar>
             </AppBar>
         </Box>

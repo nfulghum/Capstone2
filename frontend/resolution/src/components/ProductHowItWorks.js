@@ -18,17 +18,6 @@ const item = {
     px: 5,
 };
 
-const number = {
-    fontSize: 24,
-    fontFamily: 'default',
-    color: 'secondary.main',
-    fontWeight: 'medium',
-};
-
-const image = {
-    height: 55,
-    my: 4,
-};
 
 function ProductHowItWorks() {
     return (

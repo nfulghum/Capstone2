@@ -1,3 +1,5 @@
+<img src="Logo.png" alt="img" width="200"/>
+
 # Welcome to Resolution Buddy
 
 by Nick Fulghum
