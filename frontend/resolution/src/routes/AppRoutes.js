@@ -10,13 +10,13 @@ import ExerciseInfo from '../components/ExerciseInfo';
 import Nutrition from '../components/Nutrition';
 import NutritionPlan from '../components/NutritionPlan';
 
-const AppRoutes = () => {
+const AppRoutes = ({ login, signup }) => {
     return (
         <div>
             <Routes>
                 <Route path='/' element={<Home />} />
-                <Route path='/login' element={<Login />} />
-                <Route path='/signup' element={<Signup />} />
+                <Route path='/login' element={<Login login={login} />} />
+                <Route path='/signup' element={<Signup signup={signup} />} />
                 <Route path='/exercise' element={<Exercise />} />
                 <Route path='/exercise/:handle' element={<ExerciseCategory />} />
                 <Route path='/exercise/:handle/info' element={<ExerciseInfo />} />

@@ -1,12 +1,3 @@
-CREATE TABLE exercises (
-    bodyPart TEXT,
-    equipment TEXT,
-    gifUrl TEXT NOT NULL,
-    id SERIAL PRIMARY KEY,
-    name TEXT,
-    target TEXT
-);
-
 CREATE TABLE users (
     username VARCHAR(25) PRIMARY KEY,
     password TEXT NOT NULL,
@@ -15,5 +6,14 @@ CREATE TABLE users (
     email TEXT NOT NULL
         CHECK (position('@' IN email) > 1),
      is_admin BOOLEAN NOT NULL DEFAULT FALSE
+);
+
+CREATE TABLE exercises (
+    bodyPart TEXT,
+    equipment TEXT,
+    gifUrl TEXT NOT NULL,
+    id SERIAL PRIMARY KEY,
+    name TEXT,
+    target TEXT
 );
 
