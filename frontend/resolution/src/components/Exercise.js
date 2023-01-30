@@ -1,9 +1,7 @@
-import React from 'react';
-import SearchForm from './SearchForm';
-import ExerciseCategory from './ExerciseCategory';
+import React, { useEffect, useState } from 'react';
+
 
 const Exercise = () => {
-
 
     return (
         <div>

@@ -1,9 +1,9 @@
 import React from 'react';
-import ExerciseCard from './ExerciseCard';
+import { Stack, Typography } from '@mui/material';
 
 const ExerciseCategory = () => {
     return (
-        <div>ExerciseCategory</div>
+        <div></div>
     )
 }
 

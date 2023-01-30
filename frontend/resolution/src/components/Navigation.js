@@ -35,7 +35,7 @@ const Navigation = ({ logout }) => {
                             <Link sx={{ mr: 2 }} {...linkProps} to="exercise">Exercise</Link>
                             <Link sx={{ mr: 2 }} {...linkProps} to="nutrition">Nutrition</Link>
                             <Link sx={{ mr: 2 }} {...linkProps} to="profile">Profile</Link>
-                            <Link sx={{ mr: 2 }} onClick={logout} {...linkProps} to="logout">Logout</Link>
+                            <Link sx={{ mr: 2 }} onClick={logout} {...linkProps} to="/">Logout</Link>
                             {currentUser.first_name || currentUser.username}
                         </>
                         :

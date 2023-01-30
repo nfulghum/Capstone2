@@ -17,3 +17,7 @@ CREATE TABLE exercises (
     target TEXT
 );
 
+CREATE TABLE meal_plan (
+    id SERIAL PRIMARY KEY,
+    UserID 
+)
