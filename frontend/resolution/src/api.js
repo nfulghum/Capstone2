@@ -52,6 +52,13 @@ class ResolutionApi {
         let res = await this.request(`users/${username}`, data, 'patch');
         return res.user;
     }
+
+    /** Get list of body parts */
+
+    static async getBodyParts() {
+        let res = await this.request('exercises');
+        return res.exercises;
+    }
 }
 
 export default ResolutionApi;

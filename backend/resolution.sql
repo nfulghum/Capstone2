@@ -1,9 +1,9 @@
-\echo 'Delete and recreate resolution db?'
+\echo 'Delete and recreate resolution_buddy db?'
 \prompt 'Return for yes or control-C to cancel > ' foo
 
-DROP DATABASE resoltuion_buddy;
-CREATE DATABASE resolution_buddy;
-\connect resolution_buddy
+DROP DATABASE resoltuion;
+CREATE DATABASE resolution;
+\connect resolution
 
 \i resolution-schema.sql
 \i resolution-seed.sql

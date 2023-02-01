@@ -9,15 +9,16 @@ CREATE TABLE users (
 );
 
 CREATE TABLE exercises (
+    id SERIAL PRIMARY KEY,
     bodyPart TEXT,
     equipment TEXT,
     gifUrl TEXT NOT NULL,
-    id SERIAL PRIMARY KEY,
     name TEXT,
-    target TEXT
+    target TEXT,
 );
 
-CREATE TABLE meal_plan (
+CREATE TABLE bodyParts (
     id SERIAL PRIMARY KEY,
-    UserID 
-)
+    name TEXT,
+);
+

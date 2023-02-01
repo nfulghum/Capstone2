@@ -35,6 +35,6 @@ module.exports = {
   SECRET_KEY,
   PORT,
   BCRYPT_WORK_FACTOR,
-  EXERCISE_API_KEY,
   getDatabaseUri,
+  EXERCISE_API_KEY,
 };

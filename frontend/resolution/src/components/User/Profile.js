@@ -1,55 +1,72 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import {
-    Button,
-    TextField,
-    Link,
-    Grid,
-    Box,
-    Typography,
-    Container,
-    CssBaseline
-} from '@mui/material';
+import React, { useState, useContext } from 'react';
+import ResolutionApi from '../../api';
+import UserContext from '../Auth/UserContext';
+import { Button, CssBaseline, TextField, Link, Grid, Box, Typography, Container } from '@mui/material';
 
-const Signup = ({ signup }) => {
-    const navigate = useNavigate();
+
+
+const Profile = () => {
+
+    const { currentUser, setCurrentUser } = useContext(UserContext);
     const [formData, setFormData] = useState({
-        username: "",
+        firstName: currentUser.firstName,
+        lastName: currentUser.lastName,
+        email: currentUser.email,
+        username: currentUser.username,
         password: "",
-        firstName: "",
-        lastName: "",
-        email: "",
-    })
-
+    });
     const [formErros, setFormErrors] = useState([]);
+    const [saveConfirmed, setSaveConfirmed] = useState(false);
 
     async function handleSubmit(e) {
         e.preventDefault();
-        let result = await signup(formData);
-        if (result.success) {
-            navigate('/home');
-        } else {
-            setFormErrors(result.errors)
-        }
-    };
 
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData(data => ({ ...data, [name]: value }));
+        let profileDate = {
+            firstName: formData.firstName,
+            lastName: formData.lastName,
+            email: formData.email,
+            password: formData.password,
+        };
+
+        let username = formData.username;
+        let updatedUser;
+
+        try {
+            updatedUser = await ResolutionApi.saveProfile(username, profileDate);
+        } catch (e) {
+            debugger;
+            setFormErrors(e);
+            return;
+        }
+
+        setFormData(f => ({ ...f, password: "" }));
+        setFormErrors([]);
+        setSaveConfirmed(true);
+        setCurrentUser(updatedUser);
     }
 
+    function handleChange(e) {
+        const { name, value } = e.target;
+        setFormData(f => ({ ...f, [name]: value, }));
+        setFormErrors([]);
+    }
+
+
+
     return (
-        <Container component='main' maxWidth='xs'>
+
+        <Container component="main" maxWidth="xs">
             <CssBaseline />
             <Box
                 sx={{
-                    marginTop: 30,
+                    marginTop: 8,
                     display: 'flex',
                     flexDirection: 'column',
                     alignItems: 'center',
-                }}>
-                <Typography component='h1' variant='h5' color='#DD5F18'>
-                    Sign Up
+                }}
+            >
+                <Typography component="h1" variant="h5">
+                    Profile
                 </Typography>
                 <form onSubmit={handleSubmit}>
                     <Box noValidate sx={{ mt: 3 }}>
@@ -108,7 +125,7 @@ const Signup = ({ signup }) => {
                                     required
                                     fullWidth
                                     name="password"
-                                    label="Password"
+                                    label="Confirm password to save changes"
                                     type="password"
                                     id="password"
                                     autoComplete="new-password"
@@ -123,22 +140,15 @@ const Signup = ({ signup }) => {
                             variant="contained"
                             onSubmit={handleSubmit}
                             sx={{ mt: 3, mb: 2 }}
-                            style={{ background: '#093D65' }}
                         >
-                            Sign Up
+                            Save Changes
                         </Button>
-                        <Grid container justifyContent="flex-end">
-                            <Grid item>
-                                <Link href="login" variant="body2" color='#DD5F18'>
-                                    Already have an account? Sign in
-                                </Link>
-                            </Grid>
-                        </Grid>
                     </Box>
                 </form>
             </Box>
         </Container>
+
     )
 }
 
-export default Signup;
+export default Profile;

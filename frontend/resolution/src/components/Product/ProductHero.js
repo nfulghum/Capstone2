@@ -1,5 +1,5 @@
 import React from 'react';
-import largeLogo from '../assets/largeLogo.png';
+import largeLogo from '../../assets/largeLogo.png';
 import { Container, Typography, Button } from '@mui/material';
 
 

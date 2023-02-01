@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter } from 'react-router-dom';
-import UserContext from './components/UserContext';
+import UserContext from './components/Auth/UserContext';
 import ResolutionApi from './api';
-import LoadingSpinner from './components/LoadingSpinner';
+import LoadingSpinner from './components/interface/LoadingSpinner';
 import jwt_decode from 'jwt-decode';
 import useLocalStorage from './hooks/useLocalStorage';
 import AppRoutes from './routes/AppRoutes';
-import Navigation from './components/Navigation';
+import Navigation from './components/interface/Navigation';
 
 export const TOKEN_STORAGE_ID = 'resolution-token';
 

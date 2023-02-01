@@ -11,15 +11,3 @@ VALUES ('testuser',
         'Admin!',
         'nick@nickf.com',
         TRUE);
-
-INSERT INTO exercises (bodyPart,
-                       equipment,
-                       gifUrl,
-                       id,
-                       name,
-                       target)
-
-INSERT INTO nutrition (timeFrame,
-                       targetCalories,
-                       diet,
-                       exclude)

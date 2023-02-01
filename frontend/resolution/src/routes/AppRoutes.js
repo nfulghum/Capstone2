@@ -1,14 +1,14 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import Home from '../components/Home';
-import Login from '../components/Login';
-import Signup from '../components/Signup';
-import Profile from '../components/Profile';
-import Exercise from '../components/Exercise';
-import ExerciseCategory from '../components/ExerciseCategory';
-import ExerciseInfo from '../components/ExerciseInfo';
-import Nutrition from '../components/Nutrition';
-import NutritionPlan from '../components/NutritionPlan';
+import Home from '../components/interface/Home';
+import Login from '../components/Auth/Login';
+import Signup from '../components/Auth/Signup';
+import Profile from '../components/User/Profile';
+import Exercise from '../components/Exercise/Exercise';
+import ExerciseCategory from '../components/Exercise/ExerciseCategory';
+import ExerciseInfo from '../components/Exercise/ExerciseInfo';
+import Nutrition from '../components/Nutrition/Nutrition';
+import NutritionPlan from '../components/Nutrition/NutritionPlan';
 
 const AppRoutes = ({ login, signup }) => {
     return (

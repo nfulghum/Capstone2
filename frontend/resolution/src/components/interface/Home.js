@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
-import ProductHero from './ProductHero';
-import ProductValues from './ProductValues';
-import ProductHowItWorks from './ProductHowItWorks';
-import AppFooter from '../components/AppFooter';
+import ProductHero from '../Product/ProductHero';
+import ProductValues from '../Product/ProductValues';
+import ProductHowItWorks from '../Product/ProductHowItWorks';
+import AppFooter from './AppFooter';
 
 const Home = () => {
     return (
