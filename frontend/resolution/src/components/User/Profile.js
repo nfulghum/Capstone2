@@ -5,7 +5,7 @@ import { Button, CssBaseline, TextField, Link, Grid, Box, Typography, Container 
 
 
 
-const Profile = () => {
+const Profile = ({ firstName, lastName, username, email, password }) => {
 
     const { currentUser, setCurrentUser } = useContext(UserContext);
     const [formData, setFormData] = useState({
@@ -59,7 +59,7 @@ const Profile = () => {
             <CssBaseline />
             <Box
                 sx={{
-                    marginTop: 8,
+                    marginTop: 30,
                     display: 'flex',
                     flexDirection: 'column',
                     alignItems: 'center',

@@ -1,5 +1,6 @@
 CREATE TABLE users (
-    username VARCHAR(25) PRIMARY KEY,
+    user_id SERIAL PRIMARY KEY,
+    username VARCHAR(25),
     password TEXT NOT NULL,
     first_name TEXT NOT NULL,
     last_name TEXT NOT NULL,
@@ -8,17 +9,23 @@ CREATE TABLE users (
      is_admin BOOLEAN NOT NULL DEFAULT FALSE
 );
 
-CREATE TABLE exercises (
-    id SERIAL PRIMARY KEY,
-    bodyPart TEXT,
-    equipment TEXT,
-    gifUrl TEXT NOT NULL,
-    name TEXT,
-    target TEXT,
+CREATE TABLE meal_plan (
+    meal_plan_id SERIAL PRIMARY KEY,
+    name TEXT NOT NULL,
+    nutrients INTEGER NOT NULL,
+    username INTEGER NOT NULL REFERENCES users
 );
 
-CREATE TABLE bodyParts (
-    id SERIAL PRIMARY KEY,
-    name TEXT,
+CREATE TABLE meal (
+    meal_id SERIAL PRIMARY KEY,
+    title TEXT NOT NULL,
+    image_type TEXT NOT NULL,
+    ready_in_minutes INTEGER NOT NULL,
+    servings INTEGER NOT NULL,
+    source_url TEXT NOT NULL,
+    meal_plan_id INTEGER NOT NULL REFERENCES meal_plan
 );
+
+
+
 

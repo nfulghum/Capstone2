@@ -1,9 +1,10 @@
-import Search from '@mui/icons-material/Search';
 import React, { useEffect, useState } from 'react';
-import ResolutionApi from '../../api';
 import LoadingSpinner from '../interface/LoadingSpinner';
 import BodyPartCard from './BodyPartCard';
-
+import SearchForm from '../Auth/SearchForm';
+import { Grid } from '@mui/material';
+import axios from 'axios';
+import ResolutionApi from '../../api';
 
 
 const Exercise = () => {
@@ -11,13 +12,10 @@ const Exercise = () => {
     const [bodyPart, setBodyPart] = useState([]);
 
     useEffect(function getBodyPartsOnMount() {
-        search();
+        ResolutionApi.getBodyParts();
     }, []);
 
-    async function search() {
-        let bodyPart = await ResolutionApi.getBodyParts();
-        setBodyPart(bodyPart);
-    }
+    console.log(ResolutionApi.getBodyParts())
 
     if (!bodyPart) return <LoadingSpinner />
 

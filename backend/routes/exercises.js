@@ -4,9 +4,8 @@
 const axios = require("axios");
 
 const express = require("express");
-const { ensureCorrectUserOrAdmin } = require("../middleware/auth");
-const { BadRequestError } = require("../expressError");
 const { EXERCISE_API_KEY } = require("../config");
+const Exercise = require("../models/exercise");
 
 
 const router = new express.Router();
@@ -14,8 +13,6 @@ const router = new express.Router();
 /** GET / => {0: "back", 1: "cardio", 2: "chest", etc} 
  *  
  *  Returns a list of all body parts
- * 
- * 
 */
 
 router.get("/", async function (req, res, next) {
@@ -33,6 +30,7 @@ router.get("/", async function (req, res, next) {
     }).catch(function (error) {
         console.error(error);
     });
+
 })
 
 /** GET list of exercises by body part

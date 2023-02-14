@@ -7,8 +7,8 @@ import Profile from '../components/User/Profile';
 import Exercise from '../components/Exercise/Exercise';
 import ExerciseCategory from '../components/Exercise/ExerciseCategory';
 import ExerciseInfo from '../components/Exercise/ExerciseInfo';
-import Nutrition from '../components/Nutrition/Nutrition';
-import NutritionPlan from '../components/Nutrition/NutritionPlan';
+import Meal from '../components/Meal/Meal';
+import MealPlan from '../components/Meal/MealPlan';
 
 const AppRoutes = ({ login, signup }) => {
     return (
@@ -20,8 +20,8 @@ const AppRoutes = ({ login, signup }) => {
                 <Route path='/exercise' element={<Exercise />} />
                 <Route path='/exercise/:handle' element={<ExerciseCategory />} />
                 <Route path='/exercise/:handle/info' element={<ExerciseInfo />} />
-                <Route path='/nutrition' element={<Nutrition />} />
-                <Route path='/nutrition/:handle' element={<NutritionPlan />} />
+                <Route path='/meal' element={<Meal />} />
+                <Route path='/meal/:handle' element={<MealPlan />} />
                 <Route path='/profile' element={<Profile />} />
             </Routes>
         </div>

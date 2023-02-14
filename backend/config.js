@@ -11,6 +11,8 @@ const PORT = +process.env.PORT || 3001;
 
 const EXERCISE_API_KEY = process.env.EXERCISE_API_KEY;
 
+const NUTRITION_API_KEY = process.env.NUTRITION_API_KEY;
+
 // Use dev database, testing database, or via env var, production database
 function getDatabaseUri() {
   return (process.env.NODE_ENV === "test")
@@ -37,4 +39,5 @@ module.exports = {
   BCRYPT_WORK_FACTOR,
   getDatabaseUri,
   EXERCISE_API_KEY,
+  NUTRITION_API_KEY,
 };

@@ -11,7 +11,7 @@ const {
 class Exercise {
     static async createBodyPartList(data) {
         const bodyPartRes = await db.query(
-            `INSERT INTO bodyParts (name)
+            `INSERT INTO body_parts (name)
              VALUES ($1)
              RETURNING id, name`,
             [data.name]
@@ -21,4 +21,16 @@ class Exercise {
 
         return bodyPart;
     }
+
+    static async getBodyPartList() {
+        const result = await db.query(
+            `SELECT name
+             FROM body_parts
+             ORDER BY name`,
+        );
+
+        return result.rows;
+    }
 }
+
+module.exports = Exercise;
