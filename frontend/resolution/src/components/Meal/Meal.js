@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import ResolutionApi from '../../api';
 import MealCard from './MealCard';
 import {
     Button,
     TextField,
-    Link,
     Grid,
     Box,
     Typography,

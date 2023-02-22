@@ -29,7 +29,7 @@ const router = new express.Router();
  *                      }}
  * */
 
-router.get("/", async function (req, res, next) {
+router.post("/", async function (req, res, next) {
 
     let { calories, diet, exclude } = req.body
 
@@ -38,7 +38,7 @@ router.get("/", async function (req, res, next) {
         url: `https://api.spoonacular.com/mealplanner/generate?apiKey=${NUTRITION_API_KEY}`,
         params: {
             timeFrame: 'day',
-            calories,
+            targetCalories: calories,
             diet,
             exclude
         },
@@ -49,6 +49,25 @@ router.get("/", async function (req, res, next) {
     }).catch(function (error) {
         console.error(error);
     });
+})
+
+router.post("/:id/add-meal", async function (req, res, next) {
+    try {
+        const mealPlan = new Meal({
+            meal_id,
+            title,
+            ready_in_minutes,
+            servings,
+            source_url,
+        });
+
+        await mealPlan.save();
+
+        return res.redirect(`/`);
+
+    } catch (err) {
+        return next(err);
+    }
 })
 
 

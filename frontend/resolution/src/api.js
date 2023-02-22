@@ -54,26 +54,26 @@ class ResolutionApi {
         return res.user;
     }
 
-    /** Get list of body parts */
+    /** Get list exercises (filtered by params if given) */
 
-    static async getBodyParts() {
-        let res = await this.request(`exercises`);
+    static async getExerciseData(data) {
+        let res = await this.request(`exercises`, data, 'post');
         return res;
     }
 
-
-    /** Get exercies by bodyPart */
-
-    static async getExercises(bodyPart) {
-        let res = await this.request(`exercises/${bodyPart}`);
-        return res;
-    }
 
     /** Get meal plan */
 
-    static async generateMealPlan() {
-        let res = await this.request(`meal`);
+    static async generateMealPlan(data) {
+        let res = await this.request(`meal`, data, 'post');
         return res;
+    }
+
+    /** Save meal plan */
+
+    static async saveMealPlan(data) {
+        let res = await this.request(`meals/${data}`, 'post');
+        return res.meal;
     }
 
 }

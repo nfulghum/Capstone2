@@ -24,9 +24,9 @@ This app is meant for the millions of people who set new years resolutions in Ja
 
 We will be utilizing two APIs paired with our own backend DB to bring this project to life.
 
-[spoonacular API](https://spoonacular.com/food-api)
+[Spoonacular API](https://spoonacular.com/food-api)
 
-[ExerciseDB API](https://rapidapi.com/justin-WFnsXH_t6/api/exercisedb)
+[Exercises API](https://api-ninjas.com/api/exercises)
 
 ### Sensitive Data
 

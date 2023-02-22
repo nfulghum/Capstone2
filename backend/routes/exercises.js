@@ -5,7 +5,6 @@ const axios = require("axios");
 
 const express = require("express");
 const { EXERCISE_API_KEY } = require("../config");
-const Exercise = require("../models/exercise");
 
 
 const router = new express.Router();
@@ -15,13 +14,21 @@ const router = new express.Router();
  *  Returns a list of all body parts
 */
 
-router.get("/", async function (req, res, next) {
+router.post("/", async function (req, res, next) {
+
+    let { name, type, muscle, difficulty } = req.body
+
     const options = {
         method: 'GET',
-        url: 'https://exercisedb.p.rapidapi.com/exercises/bodyPartList',
+        url: 'https://api.api-ninjas.com/v1/exercises',
+        params: {
+            name,
+            type,
+            muscle,
+            difficulty,
+        },
         headers: {
-            'X-RapidAPI-Key': EXERCISE_API_KEY,
-            'X-RapidAPI-Host': 'exercisedb.p.rapidapi.com'
+            'X-API-Key': EXERCISE_API_KEY,
         }
     };
 
@@ -33,27 +40,5 @@ router.get("/", async function (req, res, next) {
 
 })
 
-/** GET list of exercises by body part
- *  
- *  
- * 
-*/
-
-router.get("/:bodyPart", async function (req, res, next) {
-    const options = {
-        method: 'GET',
-        url: `https://exercisedb.p.rapidapi.com/exercises/bodyPart/${req.params.bodyPart}`,
-        headers: {
-            'X-RapidAPI-Key': EXERCISE_API_KEY,
-            'X-RapidAPI-Host': 'exercisedb.p.rapidapi.com'
-        }
-    };
-
-    axios.request(options).then(function (response) {
-        res.json(response.data);
-    }).catch(function (error) {
-        console.error(error);
-    });
-})
 
 module.exports = router;
