@@ -27,8 +27,8 @@ const Navigation = ({ logout }) => {
                     <Link {...linkProps} to='/'>
                         <img src={smallLogo} alt="logo" style={{ width: '100px', height: '100px', margin: '0px 10px' }} />
                     </Link>
-                    <Typography variant="h6" component="div" color='#bf360c' sx={{ flexGrow: 1 }}>
-                        RESOLUTION BUDDY
+                    <Typography variant="h4" component="div" color='#bf360c' sx={{ flexGrow: 1 }}>
+                        Resolution Buddy
                     </Typography>
                     {currentUser ?
                         <>
@@ -36,7 +36,7 @@ const Navigation = ({ logout }) => {
                             <Link sx={{ mr: 2 }} {...linkProps} to="meal">Meal</Link>
                             <Link sx={{ mr: 2 }} {...linkProps} to="profile">Profile</Link>
                             <Link sx={{ mr: 2 }} onClick={logout} {...linkProps} to="/">Logout</Link>
-                            {currentUser.username}
+                            <Typography color='#bf360c'>{currentUser.username}</Typography>
                         </>
                         :
                         <>

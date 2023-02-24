@@ -7,7 +7,9 @@ import {
     Box,
     Typography,
     Container,
-    CssBaseline
+    CssBaseline,
+    MenuItem,
+    Menu,
 } from '@mui/material';
 import ResolutionApi from '../../api';
 
@@ -21,6 +23,21 @@ const Exercise = () => {
         muscle: "",
         difficulty: "",
     })
+
+    const types = [
+        { value: "cardio", label: "Cardio" }, { value: "olympic_weightlifting", label: "Olympic Weightlifting" }, { value: "plyometics", label: "Plyometrics" }, { value: "powerlifting", label: "Powerlifting" },
+        { value: "strength", label: "Strength" }, { value: "stretching", label: "Stretching" }, { value: "strongman", label: "Strongman" },
+    ]
+
+    const muscles = [
+        { value: "abdominals", label: "Abdominals" }, { value: "abductors", label: "Abductors" }, { value: "adductors", label: "Adductors" }, { value: "biceps", label: "Biceps" }, { value: "calves", label: "Calves" },
+        { value: "chest", label: "Chest" }, { value: "forearms", label: "Forearms" }, { value: "glutes", label: "Glutes" }, { value: "hamstrings", label: "Hamstrings" }, { value: "lats", label: "Lats" },
+        { value: "lower_back", label: "Lower Back" }, { value: "middle_back", label: "Middle Back" }, { value: "neck", label: "Neck" }, { value: "quadriceps", label: "Quadriceps" }, { value: "traps", label: "Traps" }, { value: "triceps", label: "Triceps" },
+    ]
+
+    const difficulty = [
+        { value: "beginner", label: "Beginner" }, { value: "intermediate", label: "Intermediate" }, { value: "expert", label: "Expert" },
+    ]
 
     async function getExercise(e) {
         e.preventDefault();
@@ -56,7 +73,7 @@ const Exercise = () => {
                                     fullWidth
                                     id="name"
                                     label="Exercise Name"
-                                    autoFocus
+                                    autoFocuselect
                                     value={formData.name}
                                     onChange={handleChange}
                                 />
@@ -67,9 +84,15 @@ const Exercise = () => {
                                     id="type"
                                     label="Type"
                                     name="type"
-                                    value={formData.type}
+                                    select
                                     onChange={handleChange}
-                                />
+                                >
+                                    {types.map((option) => (
+                                        <MenuItem key={option.value} value={option.value}>
+                                            {option.label}
+                                        </MenuItem>
+                                    ))}
+                                </TextField>
                             </Grid>
                             <Grid item xs={12}>
                                 <TextField
@@ -77,9 +100,15 @@ const Exercise = () => {
                                     id="muscle"
                                     label="Muscle"
                                     name="muscle"
-                                    value={formData.muscle}
+                                    select
                                     onChange={handleChange}
-                                />
+                                >
+                                    {muscles.map((option) => (
+                                        <MenuItem key={option.value} value={option.value}>
+                                            {option.label}
+                                        </MenuItem>
+                                    ))}
+                                </TextField>
                             </Grid>
                             <Grid item xs={12}>
                                 <TextField
@@ -87,9 +116,15 @@ const Exercise = () => {
                                     id="difficulty"
                                     label="Difficulty"
                                     name="difficulty"
-                                    value={formData.difficulty}
+                                    select
                                     onChange={handleChange}
-                                />
+                                >
+                                    {difficulty.map((option) => (
+                                        <MenuItem key={option.value} value={option.value}>
+                                            {option.label}
+                                        </MenuItem>
+                                    ))}
+                                </TextField>
                             </Grid>
                         </Grid>
                         <Button

@@ -9,14 +9,14 @@ CREATE TABLE users (
      is_admin BOOLEAN NOT NULL DEFAULT FALSE
 );
 
-CREATE TABLE meal_plan (
+CREATE TABLE meal_plans (
     meal_plan_id SERIAL PRIMARY KEY,
     name TEXT NOT NULL,
     nutrients INTEGER NOT NULL,
     username INTEGER NOT NULL REFERENCES users
 );
 
-CREATE TABLE meal (
+CREATE TABLE meals (
     meal_id SERIAL PRIMARY KEY,
     title TEXT NOT NULL,
     image_type TEXT NOT NULL,

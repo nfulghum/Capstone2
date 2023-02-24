@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react';
 import MealInfo from './MealInfo';
 import {
     Typography,
@@ -6,10 +6,9 @@ import {
     Card,
     CardContent,
     Container,
-    Grid,
     Button,
 } from '@mui/material';
-import ResolutionApi from '../../api';
+
 
 const MealCard = ({ mealData }) => {
 

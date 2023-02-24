@@ -7,6 +7,7 @@ import Signup from '../components/Auth/Signup';
 import Profile from '../components/User/Profile';
 import Exercise from '../components/Exercise/Exercise';
 import Meal from '../components/Meal/Meal';
+import EditProfile from '../components/User/EditProfile';
 
 const AppRoutes = ({ login, signup }) => {
     return (
@@ -18,6 +19,7 @@ const AppRoutes = ({ login, signup }) => {
                 <Route path='/exercise' element={<ProtectedRoute><Exercise /></ProtectedRoute>} />
                 <Route path='/meal' element={<ProtectedRoute><Meal /></ProtectedRoute>} />
                 <Route path='/profile' element={<ProtectedRoute><Profile /></ProtectedRoute>} />
+                <Route path='/profile/edit' element={<ProtectedRoute><EditProfile /></ProtectedRoute>} />
             </Routes>
         </div>
     )

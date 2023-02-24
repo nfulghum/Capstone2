@@ -8,11 +8,11 @@ const {
 
 class Meal {
 
-    static async save() {
+    static async create(id, title, ready_in_minutes, servings, source_url) {
 
         const result = await db.query(
             `INSERT INTO
-                meal_plan
+                meal
                     (
                         meal_id,
                         title,
@@ -22,12 +22,14 @@ class Meal {
                     )
                     VALUES
                         ($1, $2, $3, $4, $5)
-                    RETURNING meal_plan_id
+                    RETURNING meal_id AS "id", title, ready_in_minutes, servings, source_url
                     `,
-            [meal_id, title, ready_in_minutes, servings, source_url]
+            [id, title, ready_in_minutes, servings, source_url]
         );
 
         const mealPlan = result.rows[0];
+
+        if (!mealPlan) throw new NotFoundError(`No meal plan: ${mealPlan}`);
 
         return mealPlan;
     }

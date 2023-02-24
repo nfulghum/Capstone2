@@ -3,7 +3,6 @@
 /** Routes for exercises */
 const axios = require("axios");
 
-const jsonschema = require("jsonschema");
 const express = require("express");
 const { BadRequestError } = require("../expressError");
 const Meal = require("../models/meal");
@@ -49,27 +48,8 @@ router.post("/", async function (req, res, next) {
     }).catch(function (error) {
         console.error(error);
     });
+
 })
-
-router.post("/:id/add-meal", async function (req, res, next) {
-    try {
-        const mealPlan = new Meal({
-            meal_id,
-            title,
-            ready_in_minutes,
-            servings,
-            source_url,
-        });
-
-        await mealPlan.save();
-
-        return res.redirect(`/`);
-
-    } catch (err) {
-        return next(err);
-    }
-})
-
 
 
 module.exports = router;

@@ -8,7 +8,8 @@ import {
     Box,
     Typography,
     Container,
-    CssBaseline
+    CssBaseline,
+    MenuItem
 } from '@mui/material';
 
 
@@ -20,6 +21,37 @@ const Meal = () => {
         diet: "",
         exclude: "",
     })
+
+    const diets = [
+        {
+            value: "Gluten Free",
+            label: "Gluten Free"
+        },
+        {
+            value: "Whole 30",
+            label: "Whole 30"
+        },
+        {
+            value: "Vegan",
+            label: "Vegan"
+        },
+        {
+            value: "Vegetarian",
+            label: "Vegetarian"
+        },
+        {
+            value: "Pescetarian",
+            label: "Pescetarian"
+        },
+        {
+            value: "Primal",
+            label: "Primal"
+        },
+        {
+            value: "Paleo",
+            label: "Paleo"
+        }
+    ]
 
 
     async function getMealPlan(e) {
@@ -65,11 +97,17 @@ const Meal = () => {
                                 <TextField
                                     fullWidth
                                     id="diet"
-                                    label="Diet"
+                                    select
                                     name="diet"
-                                    value={formData.diet}
+                                    label="Select Diet"
                                     onChange={handleChange}
-                                />
+                                >
+                                    {diets.map((option) => (
+                                        <MenuItem key={option.value} value={option.value}>
+                                            {option.label}
+                                        </MenuItem>
+                                    ))}
+                                </TextField>
                             </Grid>
                             <Grid item xs={12}>
                                 <TextField
