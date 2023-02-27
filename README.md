@@ -39,7 +39,7 @@ We will be utilizing two APIs paired with our own backend DB to bring this proje
 
 ## Design
 
-COMING SOON
+![Alt text](/QuickDBD-ResolutionBuddy.png)
 
 ## Planning
 

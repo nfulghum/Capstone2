@@ -13,7 +13,6 @@ import {
 const MealCard = ({ mealData }) => {
 
 
-
     const nutrients = mealData.nutrients;
 
 
@@ -46,14 +45,6 @@ const MealCard = ({ mealData }) => {
                         {mealData.meals.map(meal => {
                             return <MealInfo key={meal.id} meal={meal} />
                         })}
-                        <Button sx={{
-                            marginTop: 4,
-                            marginLeft: 14,
-                        }} variant="contained"
-                            style={{ background: '#093D65' }}
-                        >
-                            Save Plan
-                        </Button>
                     </CardContent>
                 </Card>
             </Box>

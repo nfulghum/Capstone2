@@ -18,6 +18,7 @@ function App() {
   const [currentUser, setCurrentUser] = useState(null);
   const [token, setToken] = useLocalStorage(TOKEN_STORAGE_ID);
 
+
   console.debug(
     "App",
     "infoLoaded=", infoLoaded,
@@ -68,6 +69,7 @@ function App() {
       return { success: false, e };
     }
   };
+
 
   if (!infoLoaded) return <LoadingSpinner />
 

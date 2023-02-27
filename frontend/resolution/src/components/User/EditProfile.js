@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 import ResolutionApi from '../../api';
 import UserContext from '../Auth/UserContext';
-import { Button, CssBaseline, TextField, Link, Grid, Box, Typography, Container } from '@mui/material';
+import { Button, CssBaseline, TextField, Grid, Box, Typography, Container } from '@mui/material';
 
 const EditProfile = () => {
     const { currentUser, setCurrentUser } = useContext(UserContext);
@@ -13,7 +13,6 @@ const EditProfile = () => {
         password: "",
     });
     const [formErros, setFormErrors] = useState([]);
-    const [saveConfirmed, setSaveConfirmed] = useState(false);
 
     async function handleSubmit(e) {
         e.preventDefault();
@@ -38,7 +37,6 @@ const EditProfile = () => {
 
         setFormData(f => ({ ...f, password: "" }));
         setFormErrors([]);
-        setSaveConfirmed(true);
         setCurrentUser(updatedUser);
     }
 

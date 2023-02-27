@@ -12,9 +12,9 @@ class Meal {
 
         const result = await db.query(
             `INSERT INTO
-                meal
+                meals
                     (
-                        meal_id,
+                        id,
                         title,
                         ready_in_minutes,
                         servings,
@@ -22,7 +22,7 @@ class Meal {
                     )
                     VALUES
                         ($1, $2, $3, $4, $5)
-                    RETURNING meal_id AS "id", title, ready_in_minutes, servings, source_url
+                    RETURNING id, title, ready_in_minutes, servings, source_url
                     `,
             [id, title, ready_in_minutes, servings, source_url]
         );

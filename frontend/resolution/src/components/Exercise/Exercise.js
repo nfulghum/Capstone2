@@ -52,7 +52,7 @@ const Exercise = () => {
 
 
     return (
-        <Container component='main' maxWidth='xs'>
+        <Container component='main' maxWidth='xs' sx={{ marginBottom: 10 }}>
             <CssBaseline />
             <Box
                 sx={{
