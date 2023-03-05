@@ -65,14 +65,14 @@ class ResolutionApi {
     /** Get meal plan */
 
     static async generateMealPlan(data) {
-        let res = await this.request(`meal`, data, 'post');
+        let res = await this.request(`meals`, data, 'post');
         return res;
     }
 
     /** Save meal plan */
 
-    static async saveMealPlan(username, id) {
-        let res = await this.request(`users/${username}/meal/${id}`, {}, 'post');
+    static async saveMealPlan(username) {
+        let res = await this.request(`users/${username}/meals`, {}, 'post');
         return res;
     }
 

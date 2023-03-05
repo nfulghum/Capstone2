@@ -211,7 +211,7 @@ class User {
 
     const preCheck = await db.query(
       `SELECT id
-       FROM meal
+       FROM meals
        WHERE id = $1`, [mealId]
     );
     const meal = preCheck.rows[0];

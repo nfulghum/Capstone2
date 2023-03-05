@@ -52,7 +52,7 @@ We will be utilizing two APIs paired with our own backend DB to bring this proje
 ### Potential Issues
 
 * Streak counter requires users to login everyday from a computer (unless mobile app active) in order to update streak.
-* 
+  
 
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/nick-fulghum-7835a3234/
