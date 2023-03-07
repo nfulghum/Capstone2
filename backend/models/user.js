@@ -209,6 +209,7 @@ class User {
 
   static async saveMealPlan(username, mealId) {
 
+
     const preCheck = await db.query(
       `SELECT id
        FROM meals

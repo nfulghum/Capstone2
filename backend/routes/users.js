@@ -118,7 +118,7 @@ router.delete("/:username", ensureCorrectUserOrAdmin, async function (req, res, 
   }
 });
 
-router.post("/:username/meal", ensureCorrectUserOrAdmin, async function (req, res, next) {
+router.post("/:username/meals", ensureCorrectUserOrAdmin, async function (req, res, next) {
   try {
     const mealId = +req.params;
     await User.saveMealPlan(req.params.username, mealId);

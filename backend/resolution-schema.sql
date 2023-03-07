@@ -1,3 +1,13 @@
+CREATE TABLE meals (
+    id SERIAL PRIMARY KEY,
+    title TEXT,
+    ready_in_minutes INTEGER,
+    servings INTEGER,
+    source_url TEXT,
+    nutrients INTEGER
+);
+
+
 CREATE TABLE users (
     username VARCHAR(25) PRIMARY KEY,
     password TEXT NOT NULL,
@@ -8,22 +18,14 @@ CREATE TABLE users (
     is_admin BOOLEAN NOT NULL DEFAULT FALSE
 );
 
--- CREATE TABLE meals (
---     id SERIAL PRIMARY KEY,
---     title TEXT,
---     ready_in_minutes INTEGER,
---     servings INTEGER,
---     source_url TEXT,
---     nutrients INTEGER,
--- );
 
--- CREATE TABLE meal_plans (
---     username VARCHAR(25)
---         REFERENCES users ON DELETE CASCADE,
---     meal_id INTEGER 
---         REFERENCES meals ON DELETE CASCADE,
---     PRIMARY KEY (username, meal_id)
--- );
+CREATE TABLE meal_plans (
+    username VARCHAR(25)
+        REFERENCES users ON DELETE CASCADE,
+    meal_id INTEGER 
+        REFERENCES meals ON DELETE CASCADE,
+    PRIMARY KEY (username, meal_id)
+);
 
 
 
