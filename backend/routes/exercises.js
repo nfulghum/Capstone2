@@ -9,9 +9,9 @@ const { EXERCISE_API_KEY } = require("../config");
 
 const router = new express.Router();
 
-/** GET / => {0: "back", 1: "cardio", 2: "chest", etc} 
+/** GET 
  *  
- *  Returns a list of all body parts
+ *  Returns a list of 10 exercises based on query put in by user
 */
 
 router.post("/", async function (req, res, next) {

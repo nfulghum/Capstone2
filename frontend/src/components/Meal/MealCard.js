@@ -16,6 +16,7 @@ const MealCard = ({ mealData }) => {
 
     const nutrients = mealData.nutrients;
 
+
     const { hasSavedMealPlan, saveMealPlan } = useContext(UserContext);
     const [saved, setSaved] = useState();
 
@@ -23,7 +24,7 @@ const MealCard = ({ mealData }) => {
         setSaved(hasSavedMealPlan(mealData))
     }, [mealData, hasSavedMealPlan]);
 
-    async function handleSave(e) {
+    async function handleSave() {
         if (hasSavedMealPlan(mealData)) return;
         saveMealPlan(mealData);
         setSaved(true);

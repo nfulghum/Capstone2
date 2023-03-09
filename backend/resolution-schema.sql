@@ -4,8 +4,16 @@ CREATE TABLE meals (
     ready_in_minutes INTEGER,
     servings INTEGER,
     source_url TEXT,
-    nutrients INTEGER
 );
+
+CREATE TABLE nutrients (
+    calories FLOAT,
+    protein FLOAT,
+    fat FLOAT,
+    carbohydrates FLOAT,
+    meal_id INTEGER
+        REFERENCES meals ON DELETE CASCADE
+)
 
 
 CREATE TABLE users (

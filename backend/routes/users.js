@@ -118,9 +118,14 @@ router.delete("/:username", ensureCorrectUserOrAdmin, async function (req, res, 
   }
 });
 
+
+/** SAVE 
+ *  saves meal plan created by user to user profile
+ * 
+ */
 router.post("/:username/meals", ensureCorrectUserOrAdmin, async function (req, res, next) {
   try {
-    const mealId = +req.params;
+    const mealId = req.params;
     await User.saveMealPlan(req.params.username, mealId);
     return res.json({ saved: mealId });
   } catch (err) {

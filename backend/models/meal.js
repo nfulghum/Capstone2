@@ -8,6 +8,8 @@ const {
 
 class Meal {
 
+    /** Create meal plan  */
+
     static async create(id, title, ready_in_minutes, servings, source_url) {
 
         const result = await db.query(
@@ -33,6 +35,9 @@ class Meal {
 
         return mealPlan;
     }
+
+
+    /** Delete meal plan */
 
     static async remove(id) {
         const result = await db.query(

@@ -26,6 +26,8 @@ const router = new express.Router();
  *                      fat:121.19
  *                      carbohydrates:177.96        
  *                      }}
+ * 
+ *  returns a meal plan for 1 day based on the users inputs (calories, diet, restrictions)
  * */
 
 router.post("/", async function (req, res, next) {

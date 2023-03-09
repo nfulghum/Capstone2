@@ -79,7 +79,7 @@ function App() {
   const saveMealPlan = (mealData) => {
     if (hasSavedMealPlan(mealData)) return;
     ResolutionApi.saveMealPlan(currentUser.username, mealData);
-    setMealIds(new Set([...mealIds, mealData]));
+    setMealIds(new Set([...mealIds, mealData.meal]));
   }
 
   if (!infoLoaded) return <LoadingSpinner />
