@@ -66,13 +66,14 @@ nodemon server.js
 * [![Express][Express]][Express-url]
 * [![PostgreSQL][PostgreSQL]][PostgreSQL]
 
-## Powered By
+## API 
 
 We will be utilizing two APIs paired with our own backend DB to bring this project to life.
 
 [Spoonacular API](https://spoonacular.com/food-api)
 
 [Exercises API](https://api-ninjas.com/api/exercises)
+
 
 # Design
 
