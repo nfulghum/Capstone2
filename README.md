@@ -11,6 +11,52 @@ by Nick Fulghum
 
 This app is meant for the millions of people who set new years resolutions in January every year. By creating an easy source of information to assist in diet and exercise endeavors. With just a few clicks you can build the perfect workout and generate a meal plan based off your specific dietary needs. On top of these features we will be keeping track of your progress! Everyday you complete a workout or follow the diet plan you will get a point towards your streak. Make it into the top 10 for the week and see your name on the leaderboard!
 
+## Installation
+
+To manually install the repo:
+
+#### Clone repo:
+```bash
+git clone https://github.com/nfulghum/resolution-buddy.git
+cd frontend
+```
+#### Install frontend dependencies:
+
+```bash
+npm install
+```
+
+#### Move to backend and install dependencies:
+
+```bash
+cd .. 
+cd backend
+npm install
+```
+
+## Running the app locally
+
+To run the app on your device please follow the steps below:
+
+#### Starting client side:
+
+```bash
+cd frontend
+npm start
+```
+
+#### Navigate back:
+
+```bash
+cd ..
+```
+
+#### Starting server side:
+
+```bash
+cd backend
+nodemon server.js
+```
 
 ## Built With
 
@@ -28,31 +74,27 @@ We will be utilizing two APIs paired with our own backend DB to bring this proje
 
 [Exercises API](https://api-ninjas.com/api/exercises)
 
-### Sensitive Data
-
-* Secure passwords
-
+# Design
 
 ## User Flow
 
 ![Alt text](/ResolutionBuddy.jpg)
 
-## Design
+## ERD
 
 ![Alt text](/QuickDBD-ResolutionBuddy.png)
 
-## Planning
-
-### Stretch Goals
-
-* Instant messaging amongst users to allow encouragment / sharing goals for accountability
-* Creating both web app/mobile app using React Native
-* Linking users google calendar to add workout/meal plan 
-
-### Potential Issues
-
-* Streak counter requires users to login everyday from a computer (unless mobile app active) in order to update streak.
+## Project Architecture
   
+![Alt text](/Resolution-buddy-diagram.jpg)
+
+# Future Updates
+
+#### In order to improve the application the following should be added
+
+* Save meal plans and exercises to user profile.
+* Track users progress via streak counter, weight, body fat %.
+* Link users Resolution Buddy account to google calendars / email to assist in scheduling, updates, and weekly email motivational messages. 
 
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/nick-fulghum-7835a3234/

@@ -78,7 +78,7 @@ function App() {
 
   const saveMealPlan = (mealData) => {
     if (hasSavedMealPlan(mealData)) return;
-    ResolutionApi.saveMealPlan(currentUser.username, mealData);
+    ResolutionApi.saveMealPlan(currentUser.username, mealData.meal, mealData.nutrients);
     setMealIds(new Set([...mealIds, mealData.meal]));
   }
 
