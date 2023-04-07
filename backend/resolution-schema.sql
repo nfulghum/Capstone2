@@ -1,19 +1,19 @@
 CREATE TABLE meals (
-    id SERIAL PRIMARY KEY,
-    title TEXT,
-    ready_in_minutes INTEGER,
-    servings INTEGER,
-    source_url TEXT,
+  id SERIAL PRIMARY KEY,
+  title VARCHAR(255),
+  image_type VARCHAR(10),
+  ready_in_minutes INT,
+  servings INT,
+  source_url VARCHAR(255)
 );
 
 CREATE TABLE nutrients (
-    calories FLOAT,
-    protein FLOAT,
-    fat FLOAT,
-    carbohydrates FLOAT,
-    meal_id INTEGER
-        REFERENCES meals ON DELETE CASCADE
-)
+  id SERIAL PRIMARY KEY,
+  calories DECIMAL,
+  carbohydrates DECIMAL,
+  fat DECIMAL,
+  protein DECIMAL
+);
 
 
 CREATE TABLE users (
