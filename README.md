@@ -1,4 +1,4 @@
-<img src="Logo.png" alt="img" width="200"/>
+<img src="RBLogo.png" alt="img" width="200"/>
 
 # Welcome to Resolution Buddy
 
@@ -79,11 +79,11 @@ We will be utilizing two APIs paired with our own backend DB to bring this proje
 
 ## User Flow
 
-![Alt text](/ResolutionBuddy.jpg)
+![Alt text](/RB.jpg)
 
 ## ERD
 
-![Alt text](/QuickDBD-ResolutionBuddy.png)
+![Alt text](/DBD-RB.png)
 
 ## Project Architecture
   
