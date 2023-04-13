@@ -205,24 +205,6 @@ class User {
     if (!user) throw new NotFoundError(`No user: ${username}`);
   }
 
-  /** Save a meal plan to users profile */
-
-  static async saveMealPlan(username, mealId) {
-
-    const preCheck = await db.query(
-      `SELECT username
-       FROM users
-       WHERE username = $1`, [username]
-    );
-    const user = preCheck.rows[0];
-
-    if (!user) throw new NotFoundError(`No username: ${username}`)
-
-    await db.query(
-      `INSERT INTO meal_plans (meal_id, username)
-       VALUES ($1, $2)`, [mealId, username]
-    );
-  }
 
 }
 

@@ -5,7 +5,6 @@ const axios = require("axios");
 
 const express = require("express");
 const { BadRequestError } = require("../expressError");
-const Meal = require("../models/meal");
 const { NUTRITION_API_KEY } = require("../config");
 
 
@@ -34,22 +33,31 @@ router.post("/", async function (req, res, next) {
 
     let { calories, diet, exclude } = req.body
 
-    const options = {
-        method: 'GET',
-        url: `https://api.spoonacular.com/mealplanner/generate?apiKey=${NUTRITION_API_KEY}`,
-        params: {
-            timeFrame: 'day',
-            targetCalories: calories,
-            diet,
-            exclude
-        },
-    };
+    try {
+        const response = await axios.get("https://api.spoonacular.com/mealplanner/generate", {
+            params: {
+                apiKey: NUTRITION_API_KEY,
+                timeFrame: "day",
+                targetCalories: calories,
+                diet,
+                exclude,
+            },
+        });
 
-    axios.request(options).then(function (response) {
-        res.json(response.data)
-    }).catch(function (error) {
-        console.error(error);
-    });
+        const { meals, nutrients } = response.data;
+
+        res.json({ meals, nutrients });
+    } catch (error) {
+        if (error.response) {
+            const status = error.response.status;
+            const message = error.response.data.message;
+            res.status(status).json({ error: message });
+        } else if (error.request) {
+            res.status(500).json({ error: "API request failed" });
+        } else {
+            next(error);
+        }
+    }
 
 })
 

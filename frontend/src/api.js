@@ -69,12 +69,6 @@ class ResolutionApi {
         return res;
     }
 
-    /** Save meal plan */
-
-    static async saveMealPlan(username) {
-        let res = await this.request(`users/${username}/meals`, {}, 'post');
-        return res;
-    }
 
 }
 

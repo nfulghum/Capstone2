@@ -1,21 +1,3 @@
-CREATE TABLE meals (
-  id SERIAL PRIMARY KEY,
-  title VARCHAR(255),
-  image_type VARCHAR(10),
-  ready_in_minutes INT,
-  servings INT,
-  source_url VARCHAR(255)
-);
-
-CREATE TABLE nutrients (
-  id SERIAL PRIMARY KEY,
-  calories DECIMAL,
-  carbohydrates DECIMAL,
-  fat DECIMAL,
-  protein DECIMAL
-);
-
-
 CREATE TABLE users (
     username VARCHAR(25) PRIMARY KEY,
     password TEXT NOT NULL,
@@ -27,13 +9,6 @@ CREATE TABLE users (
 );
 
 
-CREATE TABLE meal_plans (
-    username VARCHAR(25)
-        REFERENCES users ON DELETE CASCADE,
-    meal_id INTEGER 
-        REFERENCES meals ON DELETE CASCADE,
-    PRIMARY KEY (username, meal_id)
-);
 
 
 

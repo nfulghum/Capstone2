@@ -17,7 +17,7 @@ function App() {
   const [infoLoaded, setInfoLoaded] = useState(false);
   const [currentUser, setCurrentUser] = useState(null);
   const [token, setToken] = useLocalStorage(TOKEN_STORAGE_ID);
-  const [mealIds, setMealIds] = useState(new Set([]));
+
 
 
   console.debug(
@@ -35,7 +35,6 @@ function App() {
           ResolutionApi.token = token;
           let currentUser = await ResolutionApi.getCurrentUser(username);
           setCurrentUser(currentUser);
-          setMealIds(new Set(currentUser.meals));
         } catch (e) {
           setCurrentUser(null);
         }
@@ -72,22 +71,13 @@ function App() {
     }
   };
 
-  const hasSavedMealPlan = (mealData) => {
-    return mealIds.has(mealData);
-  };
-
-  const saveMealPlan = (mealData) => {
-    if (hasSavedMealPlan(mealData)) return;
-    ResolutionApi.saveMealPlan(currentUser.username, mealData.meal, mealData.nutrients);
-    setMealIds(new Set([...mealIds, mealData.meal]));
-  }
 
   if (!infoLoaded) return <LoadingSpinner />
 
   return (
 
     <BrowserRouter>
-      <UserContext.Provider value={{ currentUser, setCurrentUser, hasSavedMealPlan, saveMealPlan }}>
+      <UserContext.Provider value={{ currentUser, setCurrentUser }}>
         <Navigation logout={logout} />
         <AppRoutes login={login} signup={signup} />
       </UserContext.Provider>

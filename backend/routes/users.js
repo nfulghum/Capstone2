@@ -125,13 +125,16 @@ router.delete("/:username", ensureCorrectUserOrAdmin, async function (req, res, 
  */
 router.post("/:username/meals", ensureCorrectUserOrAdmin, async function (req, res, next) {
   try {
-    const mealId = req.params;
+    // if (!req.body.mealId) throw new BadRequestError('mealId is required');
+
+    const mealId = req.body.mealId;
+    console.log(req.body)
     await User.saveMealPlan(req.params.username, mealId);
     return res.json({ saved: mealId });
   } catch (err) {
     return next(err);
   }
-})
+});
 
 
 
