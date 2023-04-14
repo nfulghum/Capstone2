@@ -18,25 +18,30 @@ router.post("/", async function (req, res, next) {
 
     let { name, type, muscle, difficulty } = req.body
 
-    const options = {
-        method: 'GET',
-        url: 'https://api.api-ninjas.com/v1/exercises',
-        params: {
-            name,
-            type,
-            muscle,
-            difficulty,
-        },
-        headers: {
-            'X-API-Key': EXERCISE_API_KEY,
-        }
-    };
+    try {
+        const response = await axios.get("https://api.api-ninjas.com/v1/exercises", {
+            params: {
+                name,
+                type,
+                muscle,
+                difficulty,
+            },
+            headers: {
+                'X-API-Key': EXERCISE_API_KEY,
+            }
+        });
 
-    axios.request(options).then(function (response) {
         res.json(response.data);
-    }).catch(function (error) {
-        console.error(error);
-    });
+    } catch (err) {
+        if (err.response) {
+            const { status, data: { message } } = err.response;
+            res.status(status).json({ err: message });
+        } else if (err.request) {
+            throw new InternalServerError('API request failed');
+        } else {
+            next(err);
+        }
+    }
 
 })
 

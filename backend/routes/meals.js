@@ -49,8 +49,7 @@ router.post("/", async function (req, res, next) {
         res.json({ meals, nutrients });
     } catch (err) {
         if (err.response) {
-            const status = err.response.status;
-            const message = err.response.data.message;
+            const { status, data: { message } } = err.response;
             res.status(status).json({ err: message });
         } else if (err.request) {
             throw new InternalServerError('API request failed');
