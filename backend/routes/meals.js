@@ -4,7 +4,7 @@
 const axios = require("axios");
 
 const express = require("express");
-const { BadRequestError } = require("../expressError");
+const { InternalServerError } = require("../expressError");
 const { NUTRITION_API_KEY } = require("../config");
 
 
@@ -47,15 +47,15 @@ router.post("/", async function (req, res, next) {
         const { meals, nutrients } = response.data;
 
         res.json({ meals, nutrients });
-    } catch (error) {
-        if (error.response) {
-            const status = error.response.status;
-            const message = error.response.data.message;
-            res.status(status).json({ error: message });
-        } else if (error.request) {
-            res.status(500).json({ error: "API request failed" });
+    } catch (err) {
+        if (err.response) {
+            const status = err.response.status;
+            const message = err.response.data.message;
+            res.status(status).json({ err: message });
+        } else if (err.request) {
+            throw new InternalServerError('API request failed');
         } else {
-            next(error);
+            next(err);
         }
     }
 
