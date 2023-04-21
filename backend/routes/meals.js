@@ -31,9 +31,11 @@ const router = new express.Router();
 
 router.post("/", async function (req, res, next) {
 
+    // extract query params from the request body
     let { calories, diet, exclude } = req.body
 
     try {
+        // using axios to make a GET request to external API
         const response = await axios.get("https://api.spoonacular.com/mealplanner/generate", {
             params: {
                 apiKey: NUTRITION_API_KEY,
@@ -44,18 +46,11 @@ router.post("/", async function (req, res, next) {
             },
         });
 
-        const { meals, nutrients } = response.data;
+        // if successful return the response data
+        res.json(response.data);
 
-        res.json({ meals, nutrients });
     } catch (err) {
-        if (err.response) {
-            const { status, data: { message } } = err.response;
-            res.status(status).json({ err: message });
-        } else if (err.request) {
-            throw new InternalServerError('API request failed');
-        } else {
-            next(err);
-        }
+        return next(err);
     }
 
 })

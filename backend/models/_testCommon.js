@@ -3,8 +3,10 @@ const bcrypt = require("bcrypt");
 const db = require("../db.js");
 const { BCRYPT_WORK_FACTOR } = require("../config");
 
+// Sets up and tears down a test env for the "users" table in the db
 
 async function commonBeforeAll() {
+  //Deletes all users from the "users" table and inserts two new users with hashed passwords
 
   // noinspection SqlWithoutWhere
   await db.query("DELETE FROM users");
@@ -26,14 +28,17 @@ async function commonBeforeAll() {
 }
 
 async function commonBeforeEach() {
+  // starts a new transaction before each test
   await db.query("BEGIN");
 }
 
 async function commonAfterEach() {
+  // rolls back the transaction after each test
   await db.query("ROLLBACK");
 }
 
 async function commonAfterAll() {
+  // end the db connection after all tests are complete
   await db.end();
 }
 

@@ -16,9 +16,11 @@ const router = new express.Router();
 
 router.post("/", async function (req, res, next) {
 
+    // extract query params from the request body
     let { name, type, muscle, difficulty } = req.body
 
     try {
+        // using axios make GET request to external API
         const response = await axios.get("https://api.api-ninjas.com/v1/exercises", {
             params: {
                 name,
@@ -31,18 +33,12 @@ router.post("/", async function (req, res, next) {
             }
         });
 
+        // if successful return the response data
         res.json(response.data);
-    } catch (err) {
-        if (err.response) {
-            const { status, data: { message } } = err.response;
-            res.status(status).json({ err: message });
-        } else if (err.request) {
-            throw new InternalServerError('API request failed');
-        } else {
-            next(err);
-        }
-    }
 
+    } catch (err) {
+        return next(err);
+    }
 })
 
 

@@ -77,8 +77,11 @@ function App() {
   return (
 
     <BrowserRouter>
+    // Share userContext with all child components, allowing access to the current user and ability to update the user state
       <UserContext.Provider value={{ currentUser, setCurrentUser }}>
+        // logout pass down as a prop to enable the user to log out of their session.
         <Navigation logout={logout} />
+        // login, signup passed as props which allows user auth and registration
         <AppRoutes login={login} signup={signup} />
       </UserContext.Provider>
     </BrowserRouter>

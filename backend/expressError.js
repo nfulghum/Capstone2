@@ -44,11 +44,7 @@ class ForbiddenError extends ExpressError {
   }
 }
 
-class InternalServerError extends ExpressError {
-  constructor(message = "API request failed") {
-    super(message, 500)
-  }
-}
+
 
 module.exports = {
   ExpressError,
@@ -56,5 +52,4 @@ module.exports = {
   UnauthorizedError,
   BadRequestError,
   ForbiddenError,
-  InternalServerError
 };

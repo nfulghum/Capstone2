@@ -17,11 +17,16 @@ const { UnauthorizedError } = require("../expressError");
 
 function authenticateJWT(req, res, next) {
   try {
+    // Extract the auth header from the request
     const authHeader = req.headers && req.headers.authorization;
+    // check if auth header exists
     if (authHeader) {
+      // replace Bearer with JWT from auth header
       const token = authHeader.replace(/^[Bb]earer /, "").trim();
+      // verify token
       res.locals.user = jwt.verify(token, SECRET_KEY);
     }
+    // Call next middleware in the stack
     return next();
   } catch (err) {
     return next();
@@ -35,7 +40,9 @@ function authenticateJWT(req, res, next) {
 
 function ensureLoggedIn(req, res, next) {
   try {
+    // check if user is authenticated
     if (!res.locals.user) throw new UnauthorizedError();
+    // if authenticated proceed to next middleware
     return next();
   } catch (err) {
     return next(err);
@@ -43,16 +50,19 @@ function ensureLoggedIn(req, res, next) {
 }
 
 
-/** Middleware to use when they be logged in as an admin user.
+/** Middleware to use when they are logged in as an admin user.
  *
  *  If not, raises Unauthorized.
  */
 
 function ensureAdmin(req, res, next) {
   try {
+    // check if user is logged in and an admin
     if (!res.locals.user || !res.locals.user.isAdmin) {
+      // if not throw error
       throw new UnauthorizedError();
     }
+    // if user is logged in as admin proceed to next middleware
     return next();
   } catch (err) {
     return next(err);
@@ -68,6 +78,7 @@ function ensureAdmin(req, res, next) {
 function ensureCorrectUserOrAdmin(req, res, next) {
   try {
     const user = res.locals.user;
+    // check if user is auth and has admin role or is the user that matches the route params.
     if (!(user && (user.isAdmin || user.username === req.params.username))) {
       throw new UnauthorizedError();
     }

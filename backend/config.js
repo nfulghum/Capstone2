@@ -21,10 +21,8 @@ function getDatabaseUri() {
 }
 
 
-// Speed up bcrypt during tests, since the algorithm safety isn't being tested
-//
-// WJB: Evaluate in 2021 if this should be increased to 13 for non-test use
-const BCRYPT_WORK_FACTOR = process.env.NODE_ENV === "test" ? 1 : 12;
+// Set to 1 to speed up bcrypt during tests, since the algorithm safety isn't being tested
+const BCRYPT_WORK_FACTOR = process.env.NODE_ENV === "test" ? 1 : 13;
 
 console.log("Resolution Config:".green);
 console.log("SECRET_KEY:".yellow, SECRET_KEY);

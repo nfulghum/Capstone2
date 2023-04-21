@@ -5,6 +5,8 @@
 by Nick Fulghum
 
 [![LinkedIn][linkedin-shield]][linkedin-url]
+## Visit the site
+https://resolutionbuddy.surge.sh/
 
 
 ## Purpose
@@ -18,11 +20,11 @@ To manually install the repo:
 #### Clone repo:
 ```bash
 git clone https://github.com/nfulghum/resolution-buddy.git
-cd frontend
 ```
 #### Install frontend dependencies:
 
 ```bash
+cd frontend
 npm install
 ```
 
@@ -84,6 +86,63 @@ We will be utilizing two APIs paired with our own backend DB to bring this proje
 ## Project Architecture
   
 ![Alt text](/Resolution-buddy-diagram.jpg)
+
+## Important Features
+
+### Frontend
+#### useLocalStorage Hook
+Custom React hook that allows you to persist data in the browser's localStorage and synchronize it with a component's state.
+```javascript
+const useLocalStorage = (key, firstValue = null) => {
+    const initialValue = localStorage.getItem(key) || firstValue;
+    const [item, setItem] = useState(initialValue);
+
+    useEffect(function setKeyInLocalStorage() {
+        if (item === null) {
+            localStorage.removeItem(key);
+        } else {
+            localStorage.setItem(key, item);
+        }
+    }, [key, item]);
+
+    return [item, setItem];
+}
+```
+To use this component
+- Import the hook from your module
+    ```javascript
+    import useLocalStorage from './useLocalStorage';
+    ```
+- Call the hook function with the 'key' param and optionally 'firstValue' param if any
+  ```javascript
+  const [myValue, setMyValue] = useLocalStorage('myKey', 'myDefaultValue');
+  ```
+#### Protected Routes
+Custom compoennt that can be used to protect routes that require authentication.
+ ```javascript
+    const ProtectedRoute = ({ children }) => {
+        const { currentUser } = useContext(UserContext);
+
+        if (!currentUser) {
+          return <Navigate to='/login' replace />;
+        }
+
+        return children;
+    }
+```
+
+To use this component 
+- Import the component from your module
+    ```javascript 
+    import ProtectedRoute from './ProtectedRoute';
+    ```
+- Use the component to wrap the route that require authentication. (notice the unprocted route Home)
+  ```javascript
+    <Routes>
+        <Route path='/' element={<Home />} />
+        <Route path='/profile/edit' element={<ProtectedRoute><EditProfile /></ProtectedRoute>} />
+    </Routes>
+  ```
 
 # Future Updates
 

@@ -24,7 +24,7 @@ describe("createToken", function () {
   });
 
   test("works: default no admin", function () {
-    // given the security risk if this didn't work, checking this specifically
+    // Tests if the isAdmin defaults to false as intended, if this doesn't work there is a large security risk.
     const token = createToken({ username: "test" });
     const payload = jwt.verify(token, SECRET_KEY);
     expect(payload).toEqual({

@@ -22,7 +22,7 @@ class User {
    **/
 
   static async authenticate(username, password) {
-    // try to find the user first
+    // try to find the username from the users table
     const result = await db.query(
       `SELECT username,
                   password,
@@ -40,8 +40,11 @@ class User {
     if (user) {
       // compare hashed password to a new hash from password
       const isValid = await bcrypt.compare(password, user.password);
+      // if the password matches
       if (isValid === true) {
+        // delete the password from the user object for safety
         delete user.password;
+        // return the user object
         return user;
       }
     }
@@ -58,6 +61,7 @@ class User {
 
   static async register(
     { username, password, firstName, lastName, email, isAdmin }) {
+    // Check if the username already exists
     const duplicateCheck = await db.query(
       `SELECT username
            FROM users
@@ -65,12 +69,15 @@ class User {
       [username],
     );
 
+    // if it existst throw an error
     if (duplicateCheck.rows[0]) {
       throw new BadRequestError(`Duplicate username: ${username}`);
     }
 
+    // hashing user password using bcrypt 
     const hashedPassword = await bcrypt.hash(password, BCRYPT_WORK_FACTOR);
 
+    // insert new user info into db
     const result = await db.query(
       `INSERT INTO users
            (username,
@@ -160,10 +167,12 @@ class User {
    */
 
   static async update(username, data) {
+    // if update includes a new password hash it using bcrypt
     if (data.password) {
       data.password = await bcrypt.hash(data.password, BCRYPT_WORK_FACTOR);
     }
 
+    // conver the data obj into SQL for partial updates using sqlForPartialUpdates function
     const { setCols, values } = sqlForPartialUpdate(
       data,
       {
@@ -171,8 +180,11 @@ class User {
         lastName: "last_name",
         isAdmin: "is_admin",
       });
+
+    // add the username variable as the last value in the array
     const usernameVarIdx = "$" + (values.length + 1);
 
+    // SQL query to update the user record with the provided setCols and values
     const querySql = `UPDATE users 
                       SET ${setCols} 
                       WHERE username = ${usernameVarIdx} 
@@ -181,6 +193,8 @@ class User {
                                 last_name AS "lastName",
                                 email,
                                 is_admin AS "isAdmin"`;
+
+    // Execute the query against the db, pass the values array as the parameter
     const result = await db.query(querySql, [...values, username]);
     const user = result.rows[0];
 
